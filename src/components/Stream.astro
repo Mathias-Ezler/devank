@@ -1,0 +1,128 @@
+---
+import { streamers } from "../data/streamers";
+import type { Platform } from "../data/streamers";
+
+const platformLabel: Record<Platform, string> = {
+  twitch: "Twitch",
+  kick: "Kick",
+  youtube: "YouTube",
+};
+
+function profileUrl(platform: Platform, channel: string): string {
+  switch (platform) {
+    case "twitch":
+      return `https://www.twitch.tv/${channel}`;
+    case "kick":
+      return `https://kick.com/${channel}`;
+    case "youtube":
+      return `https://www.youtube.com/channel/${channel}`;
+  }
+}
+---
+
+<section id="transmision" class="mt-16 scroll-mt-24">
+  <div class="text-center">
+    <span class="ribbon font-display text-2xl uppercase tracking-wide sm:text-3xl">
+      Transmisión de la comunidad
+    </span>
+  </div>
+  <hr class="rule-double mt-6" />
+
+  <p class="mx-auto mt-6 max-w-2xl text-center font-typewriter text-sm leading-relaxed">
+    Pasate a nuestros streamers del server, todo en un solo lugar..
+  </p>
+
+  {
+    streamers.length > 0 ? (
+      <div class="mx-auto mt-8 max-w-4xl space-y-10">
+        {streamers.map((s) => (
+          <article>
+            <!-- Cabecera del streamer -->
+            <header class="mb-3 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h3 class="font-display text-3xl uppercase leading-none">{s.name}</h3>
+                <p class="mt-1 font-typewriter text-xs uppercase tracking-widest">
+                  Canal en {platformLabel[s.platform]}
+                </p>
+              </div>
+              <a
+                href={profileUrl(s.platform, s.channel)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-ink px-5 py-1.5 font-display text-base uppercase tracking-wider text-paper transition hover:bg-blood"
+              >
+                Ver en {platformLabel[s.platform]}
+              </a>
+            </header>
+
+            <!-- Reproductor -->
+            <div class="border-2 border-ink p-1">
+              <div class="aspect-video border border-ink bg-ink">
+                <iframe
+                  data-stream-frame
+                  data-platform={s.platform}
+                  data-channel={s.channel}
+                  title={`Transmisión de ${s.name}`}
+                  class="h-full w-full"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                />
+              </div>
+            </div>
+
+            <hr class="rule-double mt-10" />
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="py-10 text-center font-typewriter text-sm uppercase tracking-widest">
+        Señal perdida. No hay streamers registrados todavía.
+      </p>
+    )
+  }
+</section>
+
+<script>
+  const frames = document.querySelectorAll<HTMLIFrameElement>("[data-stream-frame]");
+
+  function embedUrl(platform: string, channel: string): string {
+    const channelParam = encodeURIComponent(channel);
+    // Twitch exige el dominio actual como "parent"; se completa solo en cada entorno
+    const parent = encodeURIComponent(window.location.hostname);
+
+    switch (platform) {
+      case "twitch":
+        return `https://player.twitch.tv/?channel=${channelParam}&parent=${parent}&muted=true&autoplay=false`;
+      case "kick":
+        return `https://player.kick.com/${channelParam}?autoplay=false&muted=true`;
+      case "youtube":
+        return `https://www.youtube.com/embed/live_stream?channel=${channelParam}`;
+      default:
+        return "";
+    }
+  }
+
+  function load(frame: HTMLIFrameElement) {
+    if (frame.src) return;
+    frame.src = embedUrl(frame.dataset.platform ?? "", frame.dataset.channel ?? "");
+  }
+
+  // Cada reproductor se carga solo cuando se acerca a la pantalla,
+  // para que la página no cargue todos los streams de golpe
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            load(entry.target as HTMLIFrameElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "300px" }
+    );
+    frames.forEach((f) => observer.observe(f));
+  } else {
+    frames.forEach(load);
+  }
+</script>

@@ -1,0 +1,98 @@
+---
+const bottom = [
+  {
+    title: "Normas de rol",
+    text: "El rol debe ser coherente. Metagaming, powergaming, venganza heredada y explotación de errores están prohibidos.",
+  },
+  {
+    title: "Acciones prohibidas",
+    text: "Prohibidos los asesinatos arbitrarios, ejecutar a rendidos y utilizar nuevos personajes para evitar las pérdidas del CK.",
+  },
+  {
+    title: "Sanciones",
+    text: "Las infracciones graves podrán implicar expulsión. El Staff revisará las pruebas y el contexto de cada incidente.",
+  },
+  {
+    title: "Aclaraciones",
+    text: "Las facciones oficiales pierden definitivamente a sus integrantes fallecidos. Solo grupos no oficiales pueden reencontrarse mediante rol.",
+  },
+];
+---
+
+<section id="normativa" class="mt-16 scroll-mt-24">
+  <div class="text-center">
+    <span class="ribbon font-display text-2xl uppercase tracking-wide sm:text-3xl">
+      Normativa oficial
+    </span>
+  </div>
+  <hr class="rule-double mt-6" />
+
+  <!-- Noticia principal -->
+  <div class="py-8 text-center">
+    <h3 class="font-display text-4xl uppercase leading-tight sm:text-5xl">
+      Un nuevo orden en un mundo en ruinas
+    </h3>
+    <p class="mx-auto mt-4 max-w-3xl font-typewriter text-sm leading-relaxed sm:text-base">
+      Tras el colapso, la humanidad lucha por sobrevivir entre los restos de la civilización.
+      En Devank Roleplay, cada decisión cuenta, cada acción tiene consecuencias y la
+      convivencia depende del respeto a unas normas claras.
+    </p>
+  </div>
+
+  <hr class="rule-double" />
+
+  <!-- Tres columnas -->
+  <div class="grid gap-0 lg:grid-cols-[1fr_1.6fr_1fr]">
+    <!-- Izquierda -->
+    <div class="border-b border-ink/40 p-6 lg:border-b-0 lg:border-r">
+      <span class="ribbon font-display text-xl uppercase">Principios del servidor</span>
+      <p class="mt-4 font-typewriter text-sm leading-relaxed">
+        Devank Roleplay es un entorno de rol de supervivencia, inmersivo y narrativo, donde se
+        prioriza la coherencia, el realismo y la creación colectiva de historias.
+      </p>
+
+      <hr class="my-6 border-ink/40" />
+
+      <span class="ribbon font-display text-xl uppercase">Objetivo</span>
+      <p class="mt-4 font-typewriter text-sm leading-relaxed">
+        Garantizar una experiencia de rol justa, estable y de calidad, manteniendo un ambiente
+        seguro, serio y coherente con la temática postapocalíptica del servidor.
+      </p>
+    </div>
+
+    <!-- Centro -->
+    <div class="flex flex-col items-center justify-center border-b border-ink/40 p-6 text-center lg:border-b-0 lg:border-r">
+      <span class="ribbon font-display text-2xl uppercase">Normas generales</span>
+      <p class="mt-6 font-display text-3xl uppercase sm:text-4xl">Una vida. Un destino.</p>
+      <p class="mt-6 max-w-md font-paper text-lg leading-relaxed">
+        <strong>Toda muerte válida es CK.</strong> La muerte de un personaje es irreversible. No
+        hay vidas adicionales ni regreso con la misma identidad.
+      </p>
+      <p class="mt-4 max-w-md font-paper text-lg leading-relaxed">
+        <strong>No se puede matar porque sí.</strong> Quien se rinde y coopera no puede ser
+        ejecutado, ni siquiera durante una guerra.
+      </p>
+    </div>
+
+    <!-- Derecha -->
+    <div class="p-6">
+      <span class="ribbon font-display text-xl uppercase">Convivencia y respeto</span>
+      <p class="mt-4 font-typewriter text-sm leading-relaxed">
+        La comunidad es el pilar de Devank. Se espera un trato respetuoso, maduro y cooperativo
+        entre todos los jugadores, tanto dentro como fuera del rol.
+      </p>
+    </div>
+  </div>
+
+  <hr class="rule-double" />
+
+  <!-- Parte inferior: 2x2 -->
+  <div class="grid sm:grid-cols-2">
+    {bottom.map((b) => (
+      <div class="border-b border-ink/40 p-6 sm:[&:nth-child(odd)]:border-r">
+        <span class="ribbon font-display text-xl uppercase">{b.title}</span>
+        <p class="mt-4 font-paper text-base leading-relaxed">{b.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

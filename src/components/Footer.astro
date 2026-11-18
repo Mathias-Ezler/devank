@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+
+// TODO: reemplazar con los links reales
+const socials = [
+  { icon: "simple-icons:discord", label: "Discord", href: "#" },
+  { icon: "simple-icons:youtube", label: "YouTube", href: "#" },
+  { icon: "simple-icons:tiktok", label: "TikTok", href: "#" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer id="comunidad" class="scroll-mt-20 bg-ink px-6 py-12 text-paper">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
+    <p class="font-display text-3xl uppercase tracking-tight">
+      Devank <span class="text-blood brightness-150">Post</span>
+    </p>
+
+    <ul class="flex items-center gap-5">
+      {socials.map((s) => (
+        <li>
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            class="text-paper/70 transition hover:text-paper"
+          >
+            <Icon name={s.icon} class="h-6 w-6" />
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="max-w-md font-typewriter text-xs leading-relaxed text-paper/60">
+      DEVANK RP es un servidor de comunidad y no está afiliado a The Indie Stone.
+      Project Zomboid es marca de sus respectivos dueños.
+    </p>
+    <p class="font-typewriter text-xs text-paper/40">© {year} DEVANK RP. Todos los derechos reservados.</p>
+  </div>
+</footer>

@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+
+// TODO: reemplazar con las características reales de DEVANK
+const features = [
+  {
+    icon: "lucide:users",
+    title: "Roleplay serio",
+    text: "Personajes con historia, reglas claras y una comunidad que se toma el rol en serio.",
+  },
+  {
+    icon: "lucide:house",
+    title: "Bases y propiedades",
+    text: "Construí, defendé y administrá tu refugio dentro del mundo.",
+  },
+  {
+    icon: "lucide:briefcase",
+    title: "Facciones y oficios",
+    text: "Unite a un grupo o seguí tu camino como comerciante, médico, mecánico y más.",
+  },
+  {
+    icon: "lucide:skull",
+    title: "Supervivencia real",
+    text: "Infectados, escasez y decisiones que importan. Nada es gratis.",
+  },
+  {
+    icon: "lucide:shield",
+    title: "Staff activo",
+    text: "Moderación presente para que la experiencia sea justa para todos.",
+  },
+  {
+    icon: "lucide:radio",
+    title: "Eventos y lore",
+    text: "Una historia que avanza con eventos organizados por el equipo.",
+  },
+];
+---
+
+<section id="caracteristicas" class="mt-16 scroll-mt-24">
+  <div class="text-center">
+    <span class="ribbon font-display text-2xl uppercase tracking-wide sm:text-3xl">
+      ¿Qué hace diferente a Devank?
+    </span>
+  </div>
+  <hr class="rule-double mt-6" />
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3">
+    {features.map((f) => (
+      <article class="border-b border-ink/40 p-6 sm:[&:nth-child(odd)]:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(odd)]:border-r">
+        <Icon name={f.icon} class="h-7 w-7" />
+        <h3 class="mt-3 font-display text-2xl uppercase leading-tight">{f.title}</h3>
+        <p class="mt-2 font-paper text-base leading-relaxed">{f.text}</p>
+      </article>
+    ))}
+  </div>
+</section>

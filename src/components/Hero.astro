@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+
+const discordUrl = "https://discord.gg/R4t85ykS9";
+---
+
+<section class="relative flex min-h-[90vh] items-end justify-center overflow-hidden">
+  <img
+    src="/img/fondo2.webp"
+    alt="DEVANK RP, servidor de roleplay de Project Zomboid"
+    class="animate-slow-zoom absolute inset-0 h-full w-full object-cover"
+  />
+
+  <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent"></div>
+
+  <h1 class="sr-only">DEVANK RP</h1>
+
+  <div class="relative z-10 px-6 pb-16 text-center">
+
+
+    <div class="animate-fade-up delay-2 mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href={discordUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 rounded-md bg-[#5865F2] px-8 py-3 font-semibold uppercase tracking-wider text-white shadow-lg shadow-[#5865F2]/30 transition hover:bg-[#4752c4]"
+      >
+        <Icon name="simple-icons:discord" class="h-5 w-5" />
+        Unirse al Discord
+      </a>
+      <a
+        href="#info"
+        class="rounded-md border border-white/30 bg-black/30 px-8 py-3 font-semibold uppercase tracking-wider text-white backdrop-blur transition hover:bg-white/10"
+      >
+        Ver información
+      </a>
+    </div>
+  </div>
+</section>

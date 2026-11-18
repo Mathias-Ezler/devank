@@ -1,16 +1,31 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Masthead from "../components/Masthead.astro";
+import InfoCard from "../components/InfoCard.astro";
+import Features from "../components/Features.astro";
+import Normativa from "../components/Normativa.astro";
+import Stream from "../components/Stream.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="DEVANK RP | Servidor de Roleplay Project Zomboid">
+  <Navbar />
+  <main>
+    <Hero />
+
+    <div class="torn-wrap relative z-10 -mt-8">
+      <div class="paper torn px-6 pb-20 pt-16">
+        <div class="mx-auto max-w-6xl">
+          <Masthead />
+          <InfoCard />
+          <Features />
+          <Normativa />
+          <Stream />
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

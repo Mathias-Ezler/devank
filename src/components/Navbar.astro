@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+const discordUrl = "#"; // TODO: link real de Discord
+
+const links = [
+  { label: "Información", href: "#info" },
+  { label: "Características", href: "#caracteristicas" },
+  { label: "Normativa", href: "#normativa" },
+  { label: "Comunidad", href: "#transmision" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-paper/20 bg-ink/70 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <a href="#" class="font-display text-2xl uppercase tracking-tight text-paper">
+      Devank <span class="text-blood brightness-150">RP</span>
+    </a>
+
+    <ul class="hidden items-center gap-8 font-typewriter text-sm uppercase tracking-wider text-paper/80 md:flex">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} class="transition hover:text-paper">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href={discordUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-[#5865F2] px-4 py-2 font-display text-sm uppercase tracking-wider text-white transition hover:bg-[#4752c4]"
+    >
+      <Icon name="simple-icons:discord" class="h-4 w-4" />
+      Discord
+    </a>
+  </nav>
+</header>

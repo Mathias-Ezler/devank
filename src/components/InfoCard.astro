@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+// TODO: reemplazar con los datos reales del servidor
+const serverIp = "208.75.182.221";
+
+const stats = [
+
+  { icon: "lucide:skull", label: "Versión", value: "Build 41" },
+  { icon: "lucide:radio", label: "Estado", value: "Online" },
+  { icon: "lucide:shield", label: "Whitelist", value: "Sí" },
+];
+---
+
+<section id="info" class="mt-14 scroll-mt-24">
+  <div class="text-center">
+    <span class="ribbon font-display text-2xl uppercase tracking-wide sm:text-3xl">
+      Parte del servidor
+    </span>
+  </div>
+
+  <div class="mx-auto mt-8 max-w-4xl border-2 border-ink p-1">
+    <div class="border border-ink p-6 sm:p-8">
+      <div class="grid grid-cols-2 gap-6 md:grid-cols-4 md:divide-x md:divide-ink/40">
+        {stats.map((s) => (
+          <div class="text-center">
+            <Icon name={s.icon} class="mx-auto h-7 w-7" />
+            <p class="mt-2 font-typewriter text-xs uppercase tracking-widest">{s.label}</p>
+            <p class="mt-1 font-display text-2xl uppercase">{s.value}</p>
+          </div>
+        ))}
+      </div>
+
+      <hr class="rule-double my-6" />
+
+      <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <div class="text-center sm:text-left">
+          <p class="font-typewriter text-xs uppercase tracking-widest">IP del servidor</p>
+          <p id="server-ip" class="mt-1 font-typewriter text-xl">{serverIp}</p>
+        </div>
+        <button
+          id="copy-ip"
+          type="button"
+          class="bg-ink px-6 py-2 font-display text-lg uppercase tracking-wider text-paper transition hover:bg-blood cursor-pointer"
+        >
+          Copiar IP
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById("copy-ip");
+  const ip = document.getElementById("server-ip");
+
+  btn?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(ip?.textContent?.trim() ?? "");
+      btn.textContent = "¡Copiada!";
+      setTimeout(() => (btn.textContent = "Copiar IP"), 2000);
+    } catch {
+      btn.textContent = "No se pudo copiar";
+    }
+  });
+</script>
