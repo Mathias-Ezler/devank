@@ -9,6 +9,7 @@
   --color-paper-dark: #b9a47a;
   --color-ink: #1c1a17;
   --color-blood: #7a1414;
+  --color-red: #780000;
 }
 
 html {
@@ -107,3 +108,37 @@ body {
   .torn-wrap {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
   }
+
+/* ========================================
+   DEVANK RP - CUSTOM SCROLLBAR
+======================================== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a58b5e #171717;
+}
+
+/* Chromium, Brave, Chrome, Edge */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171717;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a58b5e;
+  border: 2px solid #171717;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d0b47c;
+}
+
+::-webkit-scrollbar-corner {
+  background: #171717;
+}

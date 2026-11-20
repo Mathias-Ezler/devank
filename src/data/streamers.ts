@@ -10,6 +10,6 @@ export interface Streamer {
 // TODO: reemplazar con los streamers reales del server
 export const streamers: Streamer[] = [
   { name: "Streamer 1", platform: "twitch", channel: "canal_de_twitch" },
-  { name: "Streamer 2", platform: "kick", channel: "byfekfs" },
+  { name: "Streamer 2", platform: "kick", channel: "xxxxxxxxxx" },
   { name: "Streamer 3", platform: "youtube", channel: "UCxxxxxxxxxxxxxxxxxxxxxx" },
 ];

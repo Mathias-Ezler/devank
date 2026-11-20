@@ -84,15 +84,13 @@ const bottom = [
     </div>
   </div>
 
-  <hr class="rule-double" />
+  <a
+  href="/normas"
+  class="mt-8 inline-flex items-center gap-3 border border-ink px-7 py-4 font-display text-lg text-blood brightness-150 uppercase tracking-wide transition-colors duration-200 hover:bg-ink hover:text-paper"
+>
+  Consultar todas las normas
+  <span aria-hidden="true">→</span>
+</a>
 
-  <!-- Parte inferior: 2x2 -->
-  <div class="grid sm:grid-cols-2">
-    {bottom.map((b) => (
-      <div class="border-b border-ink/40 p-6 sm:[&:nth-child(odd)]:border-r">
-        <span class="ribbon font-display text-xl uppercase">{b.title}</span>
-        <p class="mt-4 font-paper text-base leading-relaxed">{b.text}</p>
-      </div>
-    ))}
-  </div>
+<hr class="rule-double" />
 </section>
